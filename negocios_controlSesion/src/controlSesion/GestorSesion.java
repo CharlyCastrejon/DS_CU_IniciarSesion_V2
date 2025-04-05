@@ -8,14 +8,11 @@ package controlSesion;
  *
  * @author castrejon
  */
-
 import dto.UsuarioDTO;
+import objetosnegocio.UsuarioON;
 
-public class ValidadorAccesos implements IValidadorAcceso {
-    private GestorSesion gestor = new GestorSesion(); // stateless
-
-    @Override
-    public boolean validarUsuario(UsuarioDTO usuario) {
-        return gestor.validarCredenciales(usuario);
+class GestorSesion {
+    public boolean validarCredenciales(UsuarioDTO dto) {
+        return UsuarioON.getInstance().validar(dto);
     }
 }
